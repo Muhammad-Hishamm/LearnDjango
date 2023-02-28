@@ -2,10 +2,15 @@
 
 {% block content %}
 
-{{number}}
-<h1>Projects Templates</h1>
-{% for i in list %}:
-  <h1>{{i.id}}---<a href="/project/{{i.id}}">{{i.title}}</a>---{{i.description}}</h1>
-  <br>
-
-{% endfor %}{% endblock content%}
+  <h1>Projects Templates</h1>
+  {% for project in projects %}:
+    <h1>
+        ID ----> {{project.id}}
+        <br>
+        Title ----> <a href = "{% url 'project' project.id %}"> {{project.title}}</a>
+        <br>
+        Description ----> {{project.description}}
+    </h1>
+    <br>
+  {% endfor %}
+{% endblock content%}
