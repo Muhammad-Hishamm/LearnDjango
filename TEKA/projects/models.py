@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 
+
 # Create your models here.
 class Project (models.Model):
     title =models.CharField( max_length=200)
