@@ -1,11 +1,24 @@
-{% extends 'main.html' %} 
+{% extends 'main.html' %} {% block content %}
 
-{% block content %}
-
-{{number}}
 <h1>Projects Templates</h1>
-{% for i in list %}:
-  <h1>{{i.id}}---<a href="/project/{{i.id}}">{{i.title}}</a>---{{i.description}}</h1>
-  <br>
+<table>
+  <tr>
+    <th>Project</th>
+    <th>Positive Votes</th>
+    <th>Votes</th>
+  </tr>
 
-{% endfor %}{% endblock content%}
+  {% for project in projects %}
+  <tr>
+    <td>{{project.title}}</td>
+    <td>{{project.vote_ratio}}</td>
+    <td>{{project.vote_total}}</td>
+    <td>{{project.created}}</td>
+
+    <td><a href="{% url 'update-project' project.id %}">Edit</a></td>
+    <td><a href="{% url 'project' project.id %}">View</a></td>
+    <td><a href="{% url 'delete-template' project.id %}">Delete</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock content%}
